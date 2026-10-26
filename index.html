@@ -472,7 +472,7 @@
         width: 100%;
         z-index: 50;
         display: grid;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
         padding: 18px clamp(22px, 5vw, 72px);
         color: #fffaf1;
@@ -506,24 +506,6 @@
         text-decoration: none;
       }
       .nav-links a:hover { color: var(--saffron); }
-      .design-switcher { display: flex; justify-self: end; align-items: center; gap: 6px; }
-      .design-switcher a {
-        width: 27px;
-        height: 27px;
-        display: grid;
-        place-items: center;
-        border: 1px solid currentColor;
-        border-radius: 50%;
-        color: inherit;
-        font-size: .57rem;
-        font-weight: 600;
-        line-height: 1;
-        text-decoration: none;
-        opacity: .62;
-        transition: color .25s ease, background .25s ease, opacity .25s ease, transform .25s ease;
-      }
-      .design-switcher a:hover { color: var(--wine); background: var(--paper); opacity: 1; transform: translateY(-2px); }
-      .design-switcher a[aria-current="page"] { color: var(--wine); background: var(--paper); opacity: 1; }
 
       .hero {
         --spot-x: 50%;
@@ -786,7 +768,7 @@
         transform: scale(1.01);
         transition: transform 1.6s cubic-bezier(.2,.75,.2,1);
       }
-      .blessing-ganesha { --blessing-image: url("assets/blessing-ganesha-minimal.png"); }
+      .blessing-ganesha { --blessing-image: url("assets/blessing-ganesha-dagdusheth-v2.png"); }
       .blessing-mahavir { --blessing-image: url("assets/blessing-mahavir-ornate.png"); }
       .blessing-panel::before {
         content: "";
@@ -1128,8 +1110,6 @@
         .nav-links { display: none; }
         .nav { padding: 15px 20px; }
         .nav.scrolled { padding-block: 10px; }
-        .design-switcher { gap: 4px; }
-        .design-switcher a { width: 25px; height: 25px; font-size: .54rem; }
         .hero-flower { width: 270px; }
         .blessing {
           grid-template-columns: 1fr;
@@ -1343,8 +1323,6 @@
       }
 
       @media (max-width: 380px) {
-        .design-switcher { gap: 3px; }
-        .design-switcher a { width: 23px; height: 23px; font-size: .5rem; }
         .hero h1 { font-size: 3.55rem; }
         .hero h1 .parentage { font-size: .68rem; }
         .display { font-size: 2.55rem; }
@@ -1372,7 +1350,7 @@
       }
     </style>
   </head>
-  <body class="is-sealed" data-design="0" data-ganesha="minimal">
+  <body class="is-sealed theme-design-4" data-design="4" data-ganesha="dagdusheth">
     <div class="invitation-gate" id="invitation-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
       <div class="gate-inner">
         <p class="gate-kicker">A little something for you</p>
@@ -1414,16 +1392,11 @@
         <a href="#events">Reception</a>
         <a href="#venue">Venue</a>
       </div>
-      <div class="design-switcher" aria-label="Wedding invitation designs">
-        <a href="index.html" data-variant-link="4-minimal" title="Design 4 with Minimal Ganpati" aria-label="Design 4 with Minimal Ganpati">4M</a>
-        <a href="index.html?design=0&amp;ganesha=dagdusheth" data-variant-link="0-dagdusheth" title="Original design with Dagdusheth Ganpati" aria-label="Original design with Dagdusheth Ganpati">0D</a>
-        <a href="index.html?design=4&amp;ganesha=dagdusheth" data-variant-link="4-dagdusheth" title="Design 4 with Dagdusheth Ganpati" aria-label="Design 4 with Dagdusheth Ganpati">4D</a>
-      </div>
     </nav>
 
     <section class="blessing" id="home" aria-label="Divine blessings">
       <article class="blessing-panel blessing-ganesha" aria-label="Lord Ganesha blessing">
-        <img class="blessing-image" src="assets/blessing-ganesha-minimal.png" alt="" aria-hidden="true" />
+        <img class="blessing-image" src="assets/blessing-ganesha-dagdusheth-v2.png" alt="" aria-hidden="true" />
         <div class="blessing-panel-content">
           <h2 class="blessing-devanagari">॥ श्री गणेशाय नमः ॥</h2>
           <p class="blessing-translit">Shri Ganeshay Namah</p>
@@ -1489,7 +1462,7 @@
               </span>
             </small>
           </span>
-          <span class="amp">&amp;</span>
+          <span class="amp"><br>&amp;</span>
           <span class="name-group">
             <span class="name">Drashti</span>
             <small class="parentage">
@@ -1624,28 +1597,7 @@
       const autoScrollNotice = document.getElementById('auto-scroll-notice');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const hero = document.querySelector('.hero');
-      const pageParams = new URLSearchParams(window.location.search);
-      const requestedDesign = Number(pageParams.get('design') || 4);
-      const activeDesign = requestedDesign === 4 ? 4 : 0;
-      const activeGanesha = pageParams.get('ganesha') === 'dagdusheth' ? 'dagdusheth' : 'minimal';
-      const activeVariant = `${activeDesign}-${activeGanesha}`;
       gate.dataset.loader = 'thread';
-      document.body.dataset.design = String(activeDesign);
-      document.body.dataset.ganesha = activeGanesha;
-      if (activeDesign) document.body.classList.add(`theme-design-${activeDesign}`);
-      const ganeshaAssets = {
-        minimal: 'assets/blessing-ganesha-minimal.png',
-        dagdusheth: 'assets/blessing-ganesha-dagdusheth-v2.png'
-      };
-      const ganeshaPanel = document.querySelector('.blessing-ganesha');
-      const ganeshaImage = ganeshaPanel?.querySelector('.blessing-image');
-      if (ganeshaPanel && ganeshaImage) {
-        ganeshaImage.src = ganeshaAssets[activeGanesha];
-        ganeshaPanel.style.setProperty('--blessing-image', `url("${ganeshaAssets[activeGanesha]}")`);
-      }
-      document.querySelectorAll('[data-variant-link]').forEach((link) => {
-        if (link.dataset.variantLink === activeVariant) link.setAttribute('aria-current', 'page');
-      });
       if (hero && !reducedMotion) {
         let heroFrame = 0;
         hero.addEventListener('pointermove', (event) => {
