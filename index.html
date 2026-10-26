@@ -1321,6 +1321,8 @@
       </div>
     </div>
 
+    <audio id="background-music" src="assets/audio/chaandaniya.mp3" preload="metadata" loop></audio>
+
     <nav class="nav" aria-label="Primary navigation">
       <a class="monogram" href="#home" aria-label="Anuj and Drashti, home">A <span class="simple-amp">&amp;</span> D</a>
       <div class="nav-links">
@@ -1524,6 +1526,7 @@
     <script>
       const gate = document.getElementById('invitation-gate');
       const openButton = document.getElementById('open-invitation');
+      const backgroundMusic = document.getElementById('background-music');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const hero = document.querySelector('.hero');
       const pageParams = new URLSearchParams(window.location.search);
@@ -1573,6 +1576,9 @@
 
       const openInvitation = () => {
         if (gate.classList.contains('opening')) return;
+        backgroundMusic.volume = 0.5;
+        const musicPlayback = backgroundMusic.play();
+        if (musicPlayback) musicPlayback.catch(() => {});
         window.scrollTo(0, 0);
         openButton.disabled = true;
         gate.classList.add('opening');
