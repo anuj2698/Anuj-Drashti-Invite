@@ -651,6 +651,28 @@
         letter-spacing: .12em;
         text-transform: uppercase;
       }
+      .hero h1 .parent-line { display: block; }
+      .hero h1 .grandparentage {
+        display: grid;
+        gap: 2px;
+        margin-top: 8px;
+        font-size: clamp(.64rem, .95vw, .76rem);
+        font-weight: 500;
+        line-height: 1.45;
+        letter-spacing: .07em;
+        text-transform: none;
+      }
+      .hero h1 .grandparent-relation {
+        margin-bottom: 1px;
+        font-size: 1em;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+      .hero h1 .grandparent-name {
+        display: block;
+        text-transform: uppercase;
+      }
       .hero h1 .amp {
         position: relative;
         z-index: 0;
@@ -667,7 +689,7 @@
       .reception-invite {
         max-width: 620px;
         margin: 34px auto 0;
-        color: rgba(255,248,237,.8);
+        color: var(--saffron);
         font-size: .72rem;
         font-weight: 500;
         line-height: 1.7;
@@ -687,20 +709,6 @@
         text-transform: uppercase;
       }
       .hero-date::before, .hero-date::after { content: ""; width: 54px; height: 1px; background: rgba(255,255,255,.5); }
-      .scroll-cue {
-        position: absolute;
-        z-index: 2;
-        bottom: 24px;
-        display: grid;
-        gap: 8px;
-        place-items: center;
-        font-size: 0.6rem;
-        letter-spacing: .22em;
-        text-transform: uppercase;
-        opacity: .7;
-      }
-      .scroll-cue i { display: block; width: 1px; height: 34px; background: currentColor; animation: pulse 2s infinite; }
-
       .section { padding: clamp(90px, 12vw, 155px) clamp(22px, 7vw, 110px); }
       .section-tag {
         margin: 0 0 14px;
@@ -1003,7 +1011,14 @@
       .detail-card + .detail-card { padding-left: 38px; }
       .detail-card:last-child { border-right: 0; }
       .detail-card .num { color: var(--saffron); font-family: var(--serif); font-size: 2rem; }
-      .detail-card h3 { margin: 28px 0 14px; font-family: var(--serif); font-size: 2rem; font-weight: 400; }
+      .detail-card h3 {
+        margin: 28px 0 14px;
+        font-family: var(--sans);
+        font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: -.01em;
+      }
       .detail-card p { margin: 0; line-height: 1.8; }
       .detail-card .button { display: flex; width: fit-content; min-height: 44px; margin: 22px auto 0; padding-inline: 8px; font-size: .58rem; letter-spacing: .12em; white-space: nowrap; }
 
@@ -1038,6 +1053,7 @@
         --saffron: #b9955e;
         --line: rgba(62,43,31,.2);
         --design-art: url("assets/designs/design-4.jpeg");
+        --envelope-art: url("assets/designs/envelope background.png");
         --theme-edge: #ddd7ca;
         --theme-surface: #f1ece2;
         --theme-soft: #d8c9b3;
@@ -1051,10 +1067,19 @@
       body[class*="theme-design-"] .hero {
         color: var(--theme-hero-ink);
         background-color: var(--theme-edge);
-        background-image: linear-gradient(var(--theme-veil), var(--theme-veil)), var(--design-art);
         background-repeat: no-repeat;
         background-position: center;
         background-size: auto 114%;
+      }
+      body[class*="theme-design-"] .invitation-gate {
+        background-image: linear-gradient(var(--theme-veil), var(--theme-veil)), var(--envelope-art, var(--design-art));
+      }
+      body.theme-design-4 .invitation-gate {
+        background-position: center, center top;
+        background-size: 100% 100%, auto 110%;
+      }
+      body[class*="theme-design-"] .hero {
+        background-image: linear-gradient(var(--theme-veil), var(--theme-veil)), var(--design-art);
       }
       body[class*="theme-design-"] .invitation-gate::before,
       body[class*="theme-design-"] .invitation-gate::after,
@@ -1062,7 +1087,6 @@
       body[class*="theme-design-"] .hero::after { opacity: .28; }
       body[class*="theme-design-"] .hero-live-bg { opacity: .22; }
       body[class*="theme-design-"] .hero h1 .parentage { color: var(--theme-hero-muted); }
-      body[class*="theme-design-"] .reception-invite { color: var(--theme-hero-muted); }
       body[class*="theme-design-"] .hero-date::before,
       body[class*="theme-design-"] .hero-date::after { background: currentColor; opacity: .45; }
       body[class*="theme-design-"] .section { background: var(--theme-surface); }
@@ -1075,7 +1099,8 @@
       body[class*="theme-design-"] .gallery-photo { border-color: rgba(255,250,239,.88); }
       body[class*="theme-design-"] .nav.scrolled { background: color-mix(in srgb, var(--theme-surface) 90%, transparent); }
       body.theme-design-4 .hero .eyebrow,
-      body.theme-design-4 .hero h1 .amp { color: #d9bc85; }
+      body.theme-design-4 .hero h1 .amp,
+      body.theme-design-4 .reception-invite { color: #d9bc85; }
       body.theme-design-4 .letter-copy strong { color: #3e2b1f; text-shadow: none; }
 
       @media (max-width: 1100px) and (min-width: 801px) {
@@ -1095,7 +1120,6 @@
       @keyframes heroDriftTwo { from { transform: translate3d(10%, -8%, 0) scale(1.08); } to { transform: translate3d(-20%, 20%, 0) scale(.92); } }
       @keyframes heroDriftThree { from { transform: translate3d(-12%, 8%, 0) scale(.92); } to { transform: translate3d(16%, -18%, 0) scale(1.14); } }
       @keyframes heroTwinkle { 0%,100% { opacity: .18; transform: translateY(8px) scale(.65) rotate(0); } 50% { opacity: .92; transform: translateY(-8px) scale(1.08) rotate(45deg); } }
-      @keyframes pulse { 0%,100% { transform: scaleY(.5); transform-origin: top; opacity:.4; } 50% { transform: scaleY(1); opacity:1; } }
       @keyframes rise { from { opacity:0; transform:translateY(12px); } }
       @keyframes hintPulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
       @keyframes swipeHint { 0%,100% { transform: translateX(-2px); } 50% { transform: translateX(4px); } }
@@ -1149,7 +1173,6 @@
         .hero h1 .amp { margin: .12em 0 .09em; font-size: .42em; }
         .reception-invite { max-width: 400px; margin-top: 28px; font-size: .74rem; letter-spacing: .15em; }
         .hero-date { margin-top: 12px; }
-        .scroll-cue { bottom: 14px; }
         .section { padding: 82px 20px; }
         .display { font-size: clamp(2.7rem, 11vw, 4.2rem); line-height: 1.04; }
         .section-tag { font-size: .61rem; letter-spacing: .22em; }
@@ -1307,7 +1330,7 @@
         .event-icon { width: 42px; height: 42px; }
         .venue-map, .venue-map iframe { min-height: 350px; }
         .venue-copy .button { width: 100%; }
-        .detail-card h3 { margin: 18px 0 10px; font-size: 1.8rem; }
+        .detail-card h3 { margin: 18px 0 10px; font-size: 1.3rem; }
         .detail-card p { line-height: 1.7; }
         .countdown { grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px; }
         .count-item { padding: 20px 8px; }
@@ -1457,18 +1480,31 @@
         <h1 id="couple-names" tabindex="-1">
           <span class="name-group">
             <span class="name">Anuj</span>
-            <small class="parentage">S/O: Preeti Gajesh Dedhia</small>
+            <small class="parentage">
+              <span class="parent-line">S/O: Preeti Gajesh Dedhia</span>
+              <span class="grandparentage">
+                <span class="grandparent-relation">Grandson of</span>
+                <span class="grandparent-name">Bhanumati Rayshi Dedhia [Bhujpur]</span>
+                <span class="grandparent-name">Sushila Dhirajlal Shah [Kodai]</span>
+              </span>
+            </small>
           </span>
           <span class="amp">&amp;</span>
           <span class="name-group">
             <span class="name">Drashti</span>
-            <small class="parentage">D/O: Meena Tinesh Gala</small>
+            <small class="parentage">
+              <span class="parent-line">D/O: Meena Tinesh Gala</span>
+              <span class="grandparentage">
+                <span class="grandparent-relation">Granddaughter of</span>
+                <span class="grandparent-name">Gangaben Shantilal Gala [Luni]</span>
+                <span class="grandparent-name">Javerben Hirji Dharod [Wadala]</span>
+              </span>
+            </small>
           </span>
         </h1>
-        <p class="reception-invite">Invite you to celebrate <br> the wedding reception on</p>
+        <p class="reception-invite"><br>Invite you to celebrate <br> the wedding reception on</p>
         <div class="hero-date"><span>18th December 2026</span><span>Mumbai, Maharashtra</span></div>
       </div>
-      <div class="scroll-cue" aria-hidden="true">Discover <i></i></div>
     </header>
 
     <main>
