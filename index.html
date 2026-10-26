@@ -1496,7 +1496,7 @@
         <div class="venue-copy reveal">
           <p class="section-tag">The venue · Where to be</p>
           <h2 class="display">Sheetal Banquets</h2>
-          <address>Chincholi Bunder Extn Rd<br />Above Beyond Restaurant<br />Malad, Mindspace, W<br />Mumbai, Maharashtra 400064</address>
+          <address>Chincholi Bunder Extn Rd<br />Above Beyond Restaurant<br />Malad West, Mindspace, <br />Mumbai, Maharashtra 400064</address>
           <p>We look forward to welcoming you from 6:00 PM onwards for an evening filled with joy and celebration.</p>
           <a class="button" href="https://www.google.com/maps/search/?api=1&amp;query=Sheetal+Banquets+Malad+Mumbai" target="_blank" rel="noreferrer">Open in maps <span>↗</span></a>
         </div>
@@ -1551,10 +1551,6 @@
       document.querySelectorAll('[data-variant-link]').forEach((link) => {
         if (link.dataset.variantLink === activeVariant) link.setAttribute('aria-current', 'page');
       });
-      const designTitle = activeDesign === 4 ? 'Cocoa Ivory' : 'Original';
-      const ganeshaTitle = activeGanesha === 'dagdusheth' ? 'Dagdusheth Ganpati' : 'Minimal Ganpati';
-      document.title = `${designTitle} · ${ganeshaTitle} · Anuj & Drashti`;
-
       if (hero && !reducedMotion) {
         let heroFrame = 0;
         hero.addEventListener('pointermove', (event) => {
