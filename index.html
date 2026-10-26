@@ -1033,6 +1033,42 @@
       .count-item strong { display: block; color: var(--wine); font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 400; }
       .count-item span { font-size: .62rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
 
+      .choviar-rsvp {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(78px, 10vw, 130px) 22px;
+        text-align: center;
+        color: #fff8ed;
+        background:
+          radial-gradient(circle at 50% 18%, rgba(231,185,105,.16), transparent 34%),
+          var(--wine-dark);
+      }
+      .choviar-rsvp::before {
+        content: "";
+        position: absolute;
+        inset: 24px;
+        border: 1px solid rgba(231,185,105,.25);
+        pointer-events: none;
+      }
+      .choviar-rsvp-inner { position: relative; z-index: 1; max-width: 720px; margin: auto; }
+      .choviar-rsvp .section-tag { color: var(--saffron); }
+      .choviar-rsvp h2 {
+        margin: 18px 0 20px;
+        font-family: var(--serif);
+        font-size: clamp(2.8rem, 7vw, 5.4rem);
+        font-weight: 400;
+        line-height: 1.05;
+      }
+      .choviar-rsvp p:not(.section-tag) { max-width: 560px; margin: 0 auto; line-height: 1.8; opacity: .82; }
+      .choviar-rsvp .button {
+        margin-top: 34px;
+        border-color: var(--saffron);
+        color: #fff8ed;
+        background: rgba(255,255,255,.04);
+      }
+      .choviar-rsvp .button:hover { border-color: #fff8ed; color: var(--wine-dark); background: #fff8ed; }
+      .choviar-rsvp small { display: block; margin-top: 15px; font-size: .6rem; letter-spacing: .09em; opacity: .58; }
+
       footer {
         padding: 60px 22px;
         text-align: center;
@@ -1324,6 +1360,11 @@
         .count-item:nth-child(2) { border-right: 0; }
         .count-item:nth-child(4) { border-right: 0; }
         .count-item strong { font-size: clamp(2.5rem, 13vw, 3.5rem); }
+        .choviar-rsvp { padding: 76px 18px; }
+        .choviar-rsvp::before { inset: 14px; }
+        .choviar-rsvp h2 { font-size: clamp(2.5rem, 12vw, 3.6rem); }
+        .choviar-rsvp p:not(.section-tag) { max-width: 320px; font-size: .92rem; }
+        .choviar-rsvp .button { width: min(100%, 320px); }
         footer { padding: 48px 18px max(48px, env(safe-area-inset-bottom)); }
         footer .footer-names { font-size: 1.9rem; }
       }
@@ -1591,6 +1632,16 @@
       </section>
 
     </main>
+
+    <section class="choviar-rsvp" id="choviar-rsvp" aria-labelledby="choviar-title">
+      <div class="choviar-rsvp-inner reveal">
+        <p class="section-tag">A little RSVP</p>
+        <h2 id="choviar-title">Choviar [Early Dinner]</h2>
+        <p>Will you and your family be joining us? Please let us know your name and the number of members attending.</p>
+        <a class="button" href="https://forms.gle/uCRRSxSnYqR4aPL59" target="_blank" rel="noopener noreferrer">Yes, we’ll join <span>↗</span></a>
+        <small>The RSVP form will open in a new tab.</small>
+      </div>
+    </section>
 
     <footer><p>Awaiting your joyous presence</p><div class="footer-names">Dedhia <span class="simple-amp">&amp;</span> Gala</div><p class="footer-family">Family</p><p>18 · 12 · 2026 — Mumbai</p></footer>
 
