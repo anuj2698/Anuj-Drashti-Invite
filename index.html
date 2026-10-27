@@ -920,6 +920,17 @@
       .gallery-photo.is-portrait { grid-column: span 3; grid-row: span 4; }
       .gallery-photo.is-landscape { grid-column: span 6; grid-row: span 3; }
       .gallery-photo.is-square { grid-column: span 4; grid-row: span 4; }
+      .journey-gallery.gallery-three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: auto;
+      }
+      .gallery-three .gallery-photo,
+      .gallery-three .gallery-photo:nth-child(n) {
+        grid-column: auto;
+        grid-row: auto;
+        min-height: 0;
+        aspect-ratio: 4 / 5;
+      }
       .gallery-photo img {
         display: block;
         width: 100%;
@@ -1053,7 +1064,7 @@
       footer > p:first-child { margin: 0 0 18px; color: var(--saffron); opacity: 1; }
       footer .footer-honorees {
         margin: -2px 0 4px;
-        font-size: clamp(.76rem, 1.4vw, .9rem);
+        font-size: clamp(.92rem, 1.8vw, 1.15rem);
         line-height: 1.7;
         letter-spacing: .1em;
         text-transform: none;
@@ -1338,6 +1349,24 @@
           grid-column: span 1;
           grid-row: auto;
         }
+        .journey-gallery.gallery-three {
+          display: flex;
+          grid-template-columns: none;
+          grid-auto-rows: initial;
+        }
+        .gallery-three .gallery-set-single {
+          display: block;
+          flex: 0 0 min(84vw, 390px);
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+        }
+        .gallery-three .gallery-set-single .gallery-photo,
+        .gallery-three .gallery-set-single .gallery-photo:nth-child(n) {
+          width: 100%;
+          min-height: 0;
+          aspect-ratio: 4 / 5;
+          border-width: 4px;
+        }
         .gallery-photo.photo-tight-crop {
           --photo-scale: 2.1;
           --photo-hover-scale: 2.18;
@@ -1491,7 +1520,7 @@
       </svg>
       <div class="hero-content reveal">
         <div class="hero-intro">
-          <p class="reception-invite">With the blessings of<br /><span class="blessing-names">Visal Mata &ensp;<span class="blessing-join">and</span>&ensp;Mamal Mata,</span><br />we invite you to celebrate<br />the wedding reception of</p>
+          <p class="reception-invite">With the blessings of<br /><span class="blessing-names">Visal Mata<span class="blessing-join">and</span>Mamal Mata,</span><br /><br/>We invite you to celebrate<br />the wedding reception of</p>
         </div>
         <h1 id="couple-names" tabindex="-1">
           <span class="name-group">
@@ -1548,39 +1577,17 @@
         </div>
         <div class="gallery-swipe-cue" aria-hidden="true">
           <span class="gallery-swipe-label">Swipe to explore <span class="gallery-swipe-arrow">↔</span></span>
-          <span class="gallery-dots"><span class="gallery-dot is-active"></span><span class="gallery-dot"></span><span class="gallery-dot"></span><span class="gallery-dot"></span><span class="gallery-dot"></span></span>
+          <span class="gallery-dots"><span class="gallery-dot is-active"></span><span class="gallery-dot"></span><span class="gallery-dot"></span></span>
         </div>
-        <div class="journey-gallery" aria-label="Our memories photo gallery">
-          <div class="gallery-set" role="group" aria-label="Memories 1 to 5">
-          <figure class="gallery-photo is-square reveal"><img src="assets/memories/School Days - 1.jpeg" alt="Anuj and Drashti — School Days" loading="lazy" decoding="async" /><figcaption>School Days</figcaption></figure>
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Navratri Days - 1.jpeg" alt="Anuj and Drashti — Navratri" loading="lazy" decoding="async" /><figcaption>Navratri</figcaption></figure>
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Navratri Days - 2.jpeg" alt="Anuj and Drashti — Navratri" loading="lazy" decoding="async" /><figcaption>Navratri</figcaption></figure>
-          <figure class="gallery-photo is-landscape reveal"><img src="assets/memories/Beach Days.jpeg" alt="Anuj and Drashti — Beach Days" loading="lazy" decoding="async" /><figcaption>Beach Days</figcaption></figure>
-          <figure class="gallery-photo is-square reveal"><img src="assets/memories/College Days - 1.jpeg" alt="Anuj and Drashti — College Days" loading="lazy" decoding="async" /><figcaption>College Days</figcaption></figure>
+        <div class="journey-gallery gallery-three" aria-label="Our memories photo gallery">
+          <div class="gallery-set gallery-set-single" role="group" aria-label="Kedarnath memory">
+            <figure class="gallery-photo reveal"><img src="assets/memories/Kedarnath.jpeg" alt="Anuj and Drashti at Kedarnath" loading="lazy" decoding="async" /><figcaption>Kedarnath</figcaption></figure>
           </div>
-          <div class="gallery-set gallery-set-four" role="group" aria-label="Memories 6 to 9">
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Snacking.jpeg" alt="Anuj and Drashti — Snacking" loading="lazy" decoding="async" /><figcaption>Snacking</figcaption></figure>
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Snacking 2.jpeg" alt="Anuj and Drashti — Snacking" loading="lazy" decoding="async" /><figcaption>Snacking</figcaption></figure>
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Manali Trip 1.jpeg" alt="Anuj and Drashti — Manali Trip" loading="lazy" decoding="async" /><figcaption>Manali Trip</figcaption></figure>
-          <figure class="gallery-photo is-portrait reveal" style="--focus-y: 14%;"><img src="assets/memories/Manali Trip 2.jpeg" alt="Anuj and Drashti — Manali Trip" loading="lazy" decoding="async" /><figcaption>Manali Trip</figcaption></figure>
+          <div class="gallery-set gallery-set-single" role="group" aria-label="Leh memory">
+            <figure class="gallery-photo reveal"><img src="assets/memories/Leh.jpeg" alt="Anuj and Drashti in Leh" loading="lazy" decoding="async" /><figcaption>Leh</figcaption></figure>
           </div>
-          <div class="gallery-set gallery-set-four" role="group" aria-label="Memories 10 to 13">
-          <figure class="gallery-photo is-portrait reveal" style="--focus-y: 14%;"><img src="assets/memories/Manali Trip 3.jpeg" alt="Anuj and Drashti — Manali Trip" loading="lazy" decoding="async" /><figcaption>Manali Trip</figcaption></figure>
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Manali Trip 4.jpeg" alt="Anuj and Drashti — Manali Trip" loading="lazy" decoding="async" /><figcaption>Manali Trip</figcaption></figure>
-          <figure class="gallery-photo is-landscape reveal"><img src="assets/memories/Match Day.jpeg" alt="Anuj and Drashti — Match Day" loading="lazy" decoding="async" /><figcaption>Match Day</figcaption></figure>
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Long Distance 1.jpeg" alt="Anuj and Drashti — Long Distance" loading="lazy" decoding="async" /><figcaption>Long Distance</figcaption></figure>
-          </div>
-          <div class="gallery-set gallery-set-four" role="group" aria-label="Memories 14 to 17">
-          <figure class="gallery-photo is-portrait photo-tight-crop reveal" style="--focus-y: 36%;"><img src="assets/memories/Long Distance 2.jpeg" alt="Anuj and Drashti — Long Distance" loading="lazy" decoding="async" /><figcaption>Long Distance</figcaption></figure>
-          <figure class="gallery-photo is-square reveal"><img src="assets/memories/Kedarnath.jpeg" alt="Anuj and Drashti — Kedarnath" loading="lazy" decoding="async" /><figcaption>Kedarnath</figcaption></figure>
-          <figure class="gallery-photo is-landscape reveal"><img src="assets/memories/Bike Ride 1.jpeg" alt="Anuj and Drashti — Bike Ride" loading="lazy" decoding="async" /><figcaption>Bike Ride</figcaption></figure>
-          <figure class="gallery-photo is-landscape reveal"><img src="assets/memories/Bike Ride 2.jpeg" alt="Anuj and Drashti — Bike Ride" loading="lazy" decoding="async" /><figcaption>Bike Ride</figcaption></figure>
-          </div>
-          <div class="gallery-set gallery-set-four" role="group" aria-label="Memories 18 to 21">
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Leh Trip 1.jpeg" alt="Anuj and Drashti — Leh Trip" loading="lazy" decoding="async" /><figcaption>Leh Trip</figcaption></figure>
-          <figure class="gallery-photo is-portrait reveal"><img src="assets/memories/Leh Trip 2.jpeg" alt="Anuj and Drashti — Leh Trip" loading="lazy" decoding="async" /><figcaption>Leh Trip</figcaption></figure>
-          <figure class="gallery-photo is-landscape reveal"><img src="assets/memories/Safari Time 1.jpeg" alt="Anuj and Drashti — Safari Time" loading="lazy" decoding="async" /><figcaption>Safari Time</figcaption></figure>
-          <figure class="gallery-photo is-landscape reveal"><img src="assets/memories/Safari Time 2.jpeg" alt="Anuj and Drashti — Safari Time" loading="lazy" decoding="async" /><figcaption>Safari Time</figcaption></figure>
+          <div class="gallery-set gallery-set-single" role="group" aria-label="Marines memory">
+            <figure class="gallery-photo reveal"><img src="assets/memories/Marines.jpeg" alt="Anuj and Drashti at Marine Drive" loading="lazy" decoding="async" /><figcaption>Marines</figcaption></figure>
           </div>
         </div>
       </section>
@@ -1630,7 +1637,7 @@
 
     </main>
 
-    <footer><p>Awaiting your joyous presence</p><p class="footer-honorees">Karan Gajesh Dedhia <span class="simple-amp">&amp;</span> Prisha Heena Hardik Gala</p><p class="footer-along">along with the</p><div class="footer-names">Dedhia <span class="simple-amp">&amp;</span> Gala</div><p class="footer-family">Family</p><p>18 · 12 · 2026 — Mumbai</p></footer>
+    <footer><p>Awaiting your joyous presence</p><p class="footer-honorees">Karan Gajesh Dedhia <span class="simple-amp">&amp;</span> Prisha Heena Hardik Gala</p><p class="footer-along">along with</p><div class="footer-names">Dedhia <span class="simple-amp">&amp;</span> Gala</div><p class="footer-family">Family</p><p>18 · 12 · 2026 — Mumbai</p></footer>
 
     <script>
       const gate = document.getElementById('invitation-gate');
