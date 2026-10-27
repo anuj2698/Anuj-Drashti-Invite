@@ -31,6 +31,7 @@
 
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+      html.auto-scroll-active { scroll-behavior: auto; }
       body {
         margin: 0;
         color: var(--ink);
@@ -433,10 +434,18 @@
         backdrop-filter: blur(12px);
         opacity: 0;
         pointer-events: none;
+        appearance: none;
+        font-family: inherit;
+        text-align: left;
         transform: translate(-50%, 14px);
         transition: opacity .45s ease, transform .45s ease;
       }
-      .auto-scroll-notice.is-visible { opacity: 1; transform: translate(-50%, 0); }
+      .auto-scroll-notice.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        cursor: pointer;
+        transform: translate(-50%, 0);
+      }
       .auto-scroll-notice span {
         grid-column: 1;
         font-size: .62rem;
@@ -1021,7 +1030,7 @@
 
       .details { max-width: 1160px; margin: auto; }
       .details-head { max-width: 750px; margin-bottom: 65px; }
-      .detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); }
+      .detail-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
       .detail-card { padding: 38px 38px; padding-left: 0; border-right: 1px solid var(--line); }
       .detail-card + .detail-card { padding-left: 38px; }
       .detail-card:last-child { border-right: 0; }
@@ -1035,6 +1044,16 @@
         letter-spacing: 0;
       }
       .detail-card p { margin: 0; line-height: 1.8; }
+      .detail-card .button {
+        display: flex;
+        width: fit-content;
+        min-height: 44px;
+        margin: 22px auto 0;
+        padding-inline: 8px;
+        font-size: .58rem;
+        letter-spacing: .12em;
+        white-space: nowrap;
+      }
       .no-gifts {
         text-decoration: underline;
         text-decoration-thickness: 1px;
@@ -1157,6 +1176,13 @@
       @keyframes rise { from { opacity:0; transform:translateY(12px); } }
       @keyframes hintPulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
       @keyframes swipeHint { 0%,100% { transform: translateX(-2px); } 50% { transform: translateX(4px); } }
+
+      @media (max-width: 1100px) and (min-width: 801px) {
+        .detail-grid { grid-template-columns: repeat(2, 1fr); }
+        .detail-card:nth-child(2) { border-right: 0; }
+        .detail-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+        .detail-card:nth-child(3) { padding-left: 0; }
+      }
 
       @media (max-width: 800px) {
         .nav-links { display: none; }
@@ -1449,11 +1475,11 @@
     </div>
 
     <audio id="background-music" src="assets/audio/jashn-e-bahara.mp3" preload="metadata" loop></audio>
-    <div class="auto-scroll-notice" id="auto-scroll-notice" role="status" aria-hidden="true">
+    <button class="auto-scroll-notice" id="auto-scroll-notice" type="button" aria-label="Scroll down for celebration details" aria-hidden="true" tabindex="-1">
       <span>Scroll Down</span>
       <small>For Celebration Details</small>
       <i aria-hidden="true"></i>
-    </div>
+    </button>
 
     <nav class="nav" aria-label="Primary navigation">
       <a class="monogram" href="#home" aria-label="Anuj and Drashti, home">A <span class="simple-amp">&amp;</span> D</a>
@@ -1526,7 +1552,7 @@
           <span class="name-group">
             <span class="name">Anuj</span>
             <small class="parentage">
-              <span class="parent-line">S/O: Preeti Gajesh Dedhia</span>
+              <span class="parent-line">S/O: Preeti Gajesh Dedhia [Bhujpur]</span>
               <span class="grandparentage">
                 <span class="grandparent-relation">Grandson of</span>
                 <span class="grandparent-name">Bhanumati Rayshi Dedhia [Bhujpur]</span>
@@ -1538,7 +1564,7 @@
           <span class="name-group">
             <span class="name">Drashti</span>
             <small class="parentage">
-              <span class="parent-line">D/O: Meena Tinesh Gala</span>
+              <span class="parent-line">D/O: Meena Tinesh Gala [Luni]</span>
               <span class="grandparentage">
                 <span class="grandparent-relation">Granddaughter of</span>
                 <span class="grandparent-name">Gangaben Shantilal Gala [Luni]</span>
@@ -1622,9 +1648,10 @@
         <div class="details">
           <div class="details-head reveal"><p class="section-tag">Good to know</p><h2 class="display">A few little details.</h2></div>
           <div class="detail-grid">
-            <article class="detail-card reveal"><span class="num">01</span><h3>Dress with joy</h3><p>Festive Indian or formal evening attire is warmly welcomed for the reception.</p></article>
-            <article class="detail-card reveal"><span class="num">02</span><h3>Join us from 5:30</h3><p>The Wedding Reception begins at 5:30 PM and the celebrations continue through the evening.</p></article>
+            <article class="detail-card reveal"><span class="num">01</span><h3>Join us from 5:30</h3><p>The Wedding Reception begins at 5:30 PM and the celebrations continue through the evening.</p></article>
+            <article class="detail-card reveal"><span class="num">02</span><h3>Valet Parking Available</h3><p>Valet parking will be available at the venue for your convenience.</p></article>
             <article class="detail-card reveal"><span class="num">03</span><h3>Your presence</h3><p>Your love and blessings are the only gifts we wish for. <span class="no-gifts">No other gifts will be accepted.</span></p></article>
+            <article class="detail-card reveal"><span class="num">04</span><h3>Choviar [Early Dinner]</h3><p>Please let us know your name and the number of members joining us for Choviar at 6:00 PM.</p><a class="button" href="https://forms.gle/uCRRSxSnYqR4aPL59" target="_blank" rel="noopener noreferrer">Yes, Choviar needed <span>↗</span></a></article>
           </div>
           <div class="countdown" aria-label="Countdown to the wedding reception">
             <div class="count-item"><strong id="days">—</strong><span>Days</span></div>
@@ -1672,16 +1699,18 @@
       let autoScrollPreviousTime = 0;
       let autoScrollPosition = 0;
       const autoScrollDelay = 1800;
-      const autoScrollSpeed = 0.12;
+      const autoScrollSpeed = 0.055;
+      const scrollElement = document.scrollingElement || document.documentElement;
 
       const stopAutoScroll = () => {
-        if (!autoScrollEnabled) return;
         autoScrollEnabled = false;
         window.clearTimeout(autoScrollTimer);
         if (autoScrollFrame) window.cancelAnimationFrame(autoScrollFrame);
         autoScrollFrame = 0;
+        document.documentElement.classList.remove('auto-scroll-active');
         autoScrollNotice.classList.remove('is-visible');
         autoScrollNotice.setAttribute('aria-hidden', 'true');
+        autoScrollNotice.tabIndex = -1;
       };
 
       const advanceAutoScroll = (time) => {
@@ -1690,31 +1719,45 @@
         const elapsed = Math.min(time - autoScrollPreviousTime, 64);
         autoScrollPreviousTime = time;
         autoScrollPosition += elapsed * autoScrollSpeed;
-        window.scrollTo(0, autoScrollPosition);
-        const reachedEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        const maxScroll = Math.max(0, scrollElement.scrollHeight - window.innerHeight);
+        autoScrollPosition = Math.min(autoScrollPosition, maxScroll);
+        scrollElement.scrollTop = autoScrollPosition;
+        const reachedEnd = autoScrollPosition >= maxScroll - 1;
         if (reachedEnd) stopAutoScroll();
         else autoScrollFrame = window.requestAnimationFrame(advanceAutoScroll);
       };
 
       const scheduleAutoScroll = () => {
         if (reducedMotion) return;
+        stopAutoScroll();
         autoScrollEnabled = true;
         autoScrollNotice.classList.add('is-visible');
         autoScrollNotice.setAttribute('aria-hidden', 'false');
+        autoScrollNotice.tabIndex = 0;
         autoScrollTimer = window.setTimeout(() => {
           if (!autoScrollEnabled) return;
+          document.documentElement.classList.add('auto-scroll-active');
           autoScrollPreviousTime = 0;
-          autoScrollPosition = window.scrollY;
+          autoScrollPosition = scrollElement.scrollTop;
           autoScrollFrame = window.requestAnimationFrame(advanceAutoScroll);
         }, autoScrollDelay);
       };
 
       ['wheel', 'touchstart', 'pointerdown'].forEach((eventName) => {
-        window.addEventListener(eventName, stopAutoScroll, { passive: true });
+        window.addEventListener(eventName, (event) => {
+          if (event.target && autoScrollNotice.contains(event.target)) return;
+          stopAutoScroll();
+        }, { passive: true });
       });
       const scrollKeys = new Set(['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' ', 'Spacebar']);
       window.addEventListener('keydown', (event) => {
         if (scrollKeys.has(event.key)) stopAutoScroll();
+      });
+      autoScrollNotice.addEventListener('click', () => {
+        stopAutoScroll();
+        const maxScroll = Math.max(0, scrollElement.scrollHeight - window.innerHeight);
+        const nextPosition = Math.min(window.scrollY + window.innerHeight * .78, maxScroll);
+        window.scrollTo({ top: nextPosition, behavior: reducedMotion ? 'auto' : 'smooth' });
       });
 
       const openInvitation = () => {
