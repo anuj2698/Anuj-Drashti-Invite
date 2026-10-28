@@ -723,6 +723,7 @@
         letter-spacing: 0;
         text-transform: none;
       }
+      .hero h1 .gu-name-break { display: none; }
       .reception-invite {
         max-width: 620px;
         margin: 0 auto;
@@ -1241,6 +1242,27 @@
         letter-spacing: .035em;
       }
       html[lang="gu"] .display { line-height: 1.25; }
+      html[lang="gu"] .hero h1 {
+        font-size: clamp(38px, 10vw, 58px);
+        line-height: 1;
+      }
+      html[lang="gu"] .hero h1 .name { line-height: 1.05; }
+      html[lang="gu"] .hero h1 .amp {
+        margin: .28em 0 .24em;
+        font-size: .34em;
+        line-height: 1;
+      }
+      html[lang="gu"] .hero h1 .amp .gu-name-break { display: block; }
+      html[lang="gu"] .hero h1 .parentage {
+        font-size: clamp(.86rem, 2.9vw, 1rem);
+        line-height: 1.65;
+      }
+      html[lang="gu"] .hero h1 .grandparentage {
+        gap: 4px;
+        margin-top: 10px;
+        font-size: clamp(.76rem, 2.55vw, .9rem);
+        line-height: 1.6;
+      }
       html[lang="gu"] footer > p:first-child {
         font-size: clamp(.8rem, 2.8vw, .95rem);
         line-height: 1.6;
@@ -1656,7 +1678,7 @@
               </span>
             </small>
           </span>
-          <span class="amp"><br>&amp;</span>
+          <span class="amp">&amp;<br class="gu-name-break" /></span>
           <span class="name-group">
             <span class="name" data-i18n="brideName">Drashti</span>
             <small class="parentage">
