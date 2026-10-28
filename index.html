@@ -1245,11 +1245,7 @@
         font-size: clamp(.8rem, 2.8vw, .95rem);
         line-height: 1.6;
       }
-      html[lang="gu"] .hero h1 .name,
-      html[lang="gu"] .letter-copy strong,
-      html[lang="gu"] .signature .signature-names,
-      html[lang="gu"] .venue-copy .display,
-      html[lang="gu"] footer .footer-names {
+      html[lang="gu"] .venue-copy .display {
         font-family: "Italiana", Georgia, serif;
       }
 
@@ -1558,7 +1554,7 @@
             <span class="envelope-liner" aria-hidden="true"></span>
             <span class="envelope-letter" aria-hidden="true">
               <span class="letter-copy">
-                <strong>Anuj <span class="simple-amp">&amp;</span> Drashti</strong>
+                <strong data-i18n-html="coupleNames">Anuj <span class="simple-amp">&amp;</span> Drashti</strong>
                 <em>18 · 12 · 2026</em>
               </span>
               <span class="card-loader">
@@ -1650,25 +1646,25 @@
         </div>
         <h1 id="couple-names" tabindex="-1">
           <span class="name-group">
-            <span class="name">Anuj</span>
+            <span class="name" data-i18n="groomName">Anuj</span>
             <small class="parentage">
               <span class="parent-line" data-i18n="sonOf">S/O: Preeti Gajesh Dedhia [Bhujpur]</span>
               <span class="grandparentage">
                 <span class="grandparent-relation" data-i18n="grandsonOf">Grandson of</span>
-                <span class="grandparent-name">Bhanumati Rayshi Dedhia [Bhujpur]</span>
-                <span class="grandparent-name">Sushila Dhirajlal Shah [Kodai]</span>
+                <span class="grandparent-name" data-i18n="groomGrandmotherOne">Bhanumati Rayshi Dedhia [Bhujpur]</span>
+                <span class="grandparent-name" data-i18n="groomGrandmotherTwo">Sushila Dhirajlal Shah [Kodai]</span>
               </span>
             </small>
           </span>
           <span class="amp"><br>&amp;</span>
           <span class="name-group">
-            <span class="name">Drashti</span>
+            <span class="name" data-i18n="brideName">Drashti</span>
             <small class="parentage">
               <span class="parent-line" data-i18n="daughterOf">D/O: Meena Tinesh Gala [Luni]</span>
               <span class="grandparentage">
                 <span class="grandparent-relation" data-i18n="granddaughterOf">Granddaughter of</span>
-                <span class="grandparent-name">Gangaben Shantilal Gala [Luni]</span>
-                <span class="grandparent-name">Javerben Hirji Dharod [Wadala]</span>
+                <span class="grandparent-name" data-i18n="brideGrandmotherOne">Gangaben Shantilal Gala [Luni]</span>
+                <span class="grandparent-name" data-i18n="brideGrandmotherTwo">Javerben Hirji Dharod [Wadala]</span>
               </span>
             </small>
           </span>
@@ -1685,7 +1681,7 @@
             <p class="section-tag" data-i18n="chapterOne">Chapter one · Where it all began</p>
             <h2 class="display" data-i18n="storyTitle">We found home in each other.</h2>
             <p data-i18n="storyBody">From an unexpected hello to a thousand shared adventures, our story has led us here. With full hearts, we invite you to celebrate as we begin our forever, surrounded by the people who mean the most to us.</p>
-            <p class="signature"><span class="signature-label" data-i18n="withLove">With love,</span><span class="signature-names">Anuj <span class="simple-amp">&amp;</span> Drashti</span></p>
+            <p class="signature"><span class="signature-label" data-i18n="withLove">With love,</span><span class="signature-names" data-i18n-html="coupleNames">Anuj <span class="simple-amp">&amp;</span> Drashti</span></p>
           </div>
           <div class="personality-card personality-card-us reveal">
             <img src="assets/us-1.jpeg" alt="Anuj and Drashti surrounded by a travel, motorcycle, photography, art, and shared-memories collage" />
@@ -1763,7 +1759,7 @@
 
     </main>
 
-    <footer><p data-i18n="footerAwaiting">Awaiting your joyous presence</p><p class="footer-honorees">Karan Gajesh Dedhia <span class="simple-amp">&amp;</span> Prisha Heena Hardik Gala</p><p class="footer-along" data-i18n="footerAlong">along with</p><div class="footer-names">Dedhia <span class="simple-amp">&amp;</span> Gala</div><p class="footer-family" data-i18n="family">Family</p><p>18 · 12 · 2026 — Mumbai</p></footer>
+    <footer><p data-i18n="footerAwaiting">Awaiting your joyous presence</p><p class="footer-honorees" data-i18n-html="footerHonorees">Karan Gajesh Dedhia <span class="simple-amp">&amp;</span> Prisha Heena Hardik Gala</p><p class="footer-along" data-i18n="footerAlong">along with</p><div class="footer-names" data-i18n-html="footerFamilyNames">Dedhia <span class="simple-amp">&amp;</span> Gala</div><p class="footer-family" data-i18n="family">Family</p><p>18 · 12 · 2026 — Mumbai</p></footer>
 
     <script>
       const invitationTranslations = {
@@ -1782,6 +1778,9 @@
           celebrationDetails: 'For Celebration Details',
           primaryNavigationLabel: 'Primary navigation',
           homeLabel: 'Anuj and Drashti, home',
+          coupleNames: 'Anuj <span class="simple-amp">&amp;</span> Drashti',
+          groomName: 'Anuj',
+          brideName: 'Drashti',
           navStory: 'Our story',
           navReception: 'Reception',
           navVenue: 'Venue',
@@ -1796,8 +1795,12 @@
           heroInvite: 'With the blessings of<br /><span class="blessing-names">Mamal Mata<span class="blessing-join">and</span>Visal Mata,</span><br /><br />We invite you to celebrate<br />the wedding reception of',
           sonOf: 'S/O: Preeti Gajesh Dedhia [Bhujpur]',
           grandsonOf: 'Grandson of',
+          groomGrandmotherOne: 'Bhanumati Rayshi Dedhia [Bhujpur]',
+          groomGrandmotherTwo: 'Sushila Dhirajlal Shah [Kodai]',
           daughterOf: 'D/O: Meena Tinesh Gala [Luni]',
           granddaughterOf: 'Granddaughter of',
+          brideGrandmotherOne: 'Gangaben Shantilal Gala [Luni]',
+          brideGrandmotherTwo: 'Javerben Hirji Dharod [Wadala]',
           onLabel: 'On',
           chapterOne: 'Chapter one · Where it all began',
           storyTitle: 'We found home in each other.',
@@ -1835,12 +1838,14 @@
           minutes: 'Minutes',
           seconds: 'Seconds',
           footerAwaiting: 'Awaiting your joyous presence',
+          footerHonorees: 'Karan Gajesh Dedhia <span class="simple-amp">&amp;</span> Prisha Heena Hardik Gala',
           footerAlong: 'along with',
+          footerFamilyNames: 'Dedhia <span class="simple-amp">&amp;</span> Gala',
           family: 'Family'
         },
         gu: {
           pageTitle: 'Anuj & Drashti — Reception Invitation',
-          metaDescription: 'Anuj અને Drashtiના 18 December 2026ના રોજ Sheetal Banquets, Mumbai ખાતે યોજાનારા રિસેપ્શનની ઉજવણીમાં આપનું હાર્દિક આમંત્રણ છે.',
+          metaDescription: 'અનુજ અને દ્રષ્ટિના 18 December 2026ના રોજ Sheetal Banquets, Mumbai ખાતે યોજાનારા રિસેપ્શનની ઉજવણીમાં આપનું હાર્દિક આમંત્રણ છે.',
           languageToggleLabel: 'આમંત્રણની ભાષા પસંદ કરો',
           languageEnglishLabel: 'અંગ્રેજીમાં જુઓ',
           languageGujaratiLabel: 'ગુજરાતીમાં જુઓ',
@@ -1852,7 +1857,10 @@
           scrollDown: 'નીચે સ્ક્રોલ કરો',
           celebrationDetails: 'ઉજવણીની વિગતો માટે',
           primaryNavigationLabel: 'મુખ્ય નેવિગેશન',
-          homeLabel: 'Anuj અને Drashti, મુખ્ય પૃષ્ઠ',
+          homeLabel: 'અનુજ અને દ્રષ્ટિ, મુખ્ય પૃષ્ઠ',
+          coupleNames: 'અનુજ <span class="simple-amp">&amp;</span> દ્રષ્ટિ',
+          groomName: 'અનુજ',
+          brideName: 'દ્રષ્ટિ',
           navStory: 'અમારી કહાની',
           navReception: 'રિસેપ્શન',
           navVenue: 'સ્થળ',
@@ -1864,11 +1872,15 @@
           mahavirPrayerScript: '॥ श्री महावीर स्वामी नमः ॥',
           mahavirPrayer: 'શ્રી મહાવીર સ્વામી નમઃ',
           jaiJinendra: 'જય જિનેન્દ્ર',
-          heroInvite: '<span class="blessing-names">Mamal Mata<span class="blessing-join">અને</span>Visal Mata</span><br />ના આશીર્વાદ સાથે,<br /><br />અમે તમને<br />લગ્નના રિસેપ્શનની ઉજવણી માટે આમંત્રિત કરીએ છીએ',
-          sonOf: 'સુપુત્ર: Preeti Gajesh Dedhia [Bhujpur]',
+          heroInvite: '<span class="blessing-names">મામલ માતા<span class="blessing-join">અને</span>વિસલ માતા</span><br />ના આશીર્વાદ સાથે,<br /><br />અમે તમને<br />લગ્નના રિસેપ્શનની ઉજવણી માટે આમંત્રિત કરીએ છીએ',
+          sonOf: 'સુપુત્ર: પ્રીતિ ગજેશ દેઢિયા [ભુજપુર]',
           grandsonOf: 'પૌત્ર',
-          daughterOf: 'સુપુત્રી: Meena Tinesh Gala [Luni]',
+          groomGrandmotherOne: 'ભાનુમતી રાયશી દેઢિયા [ભુજપુર]',
+          groomGrandmotherTwo: 'સુશીલા ધીરજલાલ શાહ [કોડાય]',
+          daughterOf: 'સુપુત્રી: મીના તિનેશ ગાલા [લુણી]',
           granddaughterOf: 'પૌત્રી',
+          brideGrandmotherOne: 'ગંગાબેન શાંતિલાલ ગાલા [લુણી]',
+          brideGrandmotherTwo: 'જવેરબેન હીરજી ધારોડ [વડાલા]',
           onLabel: 'ના રોજ',
           chapterOne: 'પ્રકરણ એક · જ્યાંથી શરૂઆત થઈ',
           storyTitle: 'એકબીજામાં અમને અમારું ઘર મળ્યું.',
@@ -1906,7 +1918,9 @@
           minutes: 'મિનિટ',
           seconds: 'સેકન્ડ',
           footerAwaiting: 'આપની આનંદમય હાજરીની આતુરતાથી રાહ જોઈ રહ્યા છીએ',
+          footerHonorees: 'કરણ ગજેશ દેઢિયા <span class="simple-amp">&amp;</span> પ્રિશા હીના હાર્દિક ગાલા',
           footerAlong: 'ની સાથે',
+          footerFamilyNames: 'દેઢિયા <span class="simple-amp">&amp;</span> ગાલા',
           family: 'પરિવાર'
         }
       };
